@@ -51,6 +51,8 @@ trait WPB_Menu_Export {
 					'parent' => $item->menu_item_parent,
 					'title'  => $item->title,
 					'type'   => $item->type,
+					'classes' => $item->classes,
+					'description' => $item->description,
 				);
 
 				switch ( $item->type ) {
