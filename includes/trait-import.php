@@ -69,6 +69,14 @@ trait WPB_Menu_Import {
 				$new_menu[ $slug ]['parent']      = $menu_item['parent'];
 				$menu_data['menu-item-parent-id'] = isset( $new_menu[ $menu_item['parent'] ]['id'] ) ? $new_menu[ $menu_item['parent'] ]['id'] : 0;
 			}
+			
+			if ( isset( $menu_item['classes'] ) ) {
+				$new_menu[ $slug ]['classes'] = $menu_item['classes'];
+			}
+			
+			if ( isset( $menu_item['description'] ) ) {
+				$new_menu[ $slug ]['description'] = $menu_item['description'];
+			}
 
 			// Set the menu items and get the nav menu item ID.
 			$new_menu[ $slug ]['id'] = wp_update_nav_menu_item( $menu_id, 0, $menu_data );
