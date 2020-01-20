@@ -53,7 +53,7 @@ trait WPB_Menu_Import {
 			$menu_data_defaults  = array(
 				'menu-item-title'  => isset( $menu_item['title'] ) ? $menu_item['title'] : false,
 				'menu-item-status' => 'publish',
-				'menu-item-classes' => '',
+				'menu-item-classes' => array(),
 				'menu-item-description' => '',
 			);
 			$menu_data_raw       = $this->$get_method( $menu_item, $menu_data_defaults );
