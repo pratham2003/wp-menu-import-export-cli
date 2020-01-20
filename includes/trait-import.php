@@ -53,7 +53,7 @@ trait WPB_Menu_Import {
 			$menu_data_defaults  = array(
 				'menu-item-title'  => isset( $menu_item['title'] ) ? $menu_item['title'] : false,
 				'menu-item-status' => 'publish',
-				'menu-item-classes' => array(),
+				'menu-item-classes' => '',
 				'menu-item-description' => '',
 			);
 			$menu_data_raw       = $this->$get_method( $menu_item, $menu_data_defaults );
@@ -158,7 +158,7 @@ trait WPB_Menu_Import {
 		return array(
 			'menu-item-url'   => 'http' === substr( $url, 0, 4 ) ? esc_url( $url ) : home_url( $url ),
 			'menu-item-title' => $defaults['menu-item-title'] ?: $menu_item['url'],
-			'menu-item-classes' => $defaults['menu-item-classes'] ?: $menu_item['classes'],
+			'menu-item-classes' => $defaults['menu-item-classes'] ?: implode(' ', $menu_item['classes']),
 			'menu-item-description' => $defaults['menu-item-description'] ?: $menu_item['description'],
 		);
 	}
@@ -184,8 +184,8 @@ trait WPB_Menu_Import {
 			'menu-item-type'      => 'taxonomy',
 			'menu-item-object'    => $term->taxonomy,
 			'menu-item-object-id' => $term->term_id,
-			'menu-item-title'     => $defaults['menu-item-title'] ?: $term->name,
-			'menu-item-classes' => $defaults['menu-item-classes'] ?: $menu_item['classes'],
+			'menu-item-title'     => $defaults['menu-item-title'] ?: $term->name, 
+			'menu-item-classes' => $defaults['menu-item-classes'] ?: implode(' ', $menu_item['classes']),
 			'menu-item-description' => $defaults['menu-item-description'] ?: $menu_item['description'],
 		);
 	}
@@ -217,7 +217,7 @@ trait WPB_Menu_Import {
 			'menu-item-object'    => 'page',
 			'menu-item-object-id' => $pages[0]->ID,
 			'menu-item-title'     => $defaults['menu-item-title'] ?: $pages[0]->post_title,
-			'menu-item-classes' => $defaults['menu-item-classes'] ?: $menu_item['classes'],
+			'menu-item-classes' => $defaults['menu-item-classes'] ?: implode(' ', $menu_item['classes']),
 			'menu-item-description' => $defaults['menu-item-description'] ?: $menu_item['description'],
 		);
 	}
